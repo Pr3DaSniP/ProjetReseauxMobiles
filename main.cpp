@@ -26,7 +26,7 @@ void sleep(int milliseconds)
 	}
 }
 
-void trace(Graphe<Sommet<Antenne> *> g)
+void trace(Graphe<Sommet<Antenne> *> g, bool rect)
 {
 	for (Sommet<Antenne> *s : g.getSommets())
 	{
@@ -37,10 +37,19 @@ void trace(Graphe<Sommet<Antenne> *> g)
 		setcolor(s->getCouleur());
 		fillellipse(p.getLambertLatitude(), p.getLambertLongitude(), 10, 10);
 
-		// changer la couleur du texte
 		setcolor(RED);
-		// circle(p.getLambertLatitude(), p.getLambertLongitude(), s->getValeur().getPuissanceEmission());
-		rectangle(p.getLambertLatitude() - s->getValeur().getPuissanceEmission(), p.getLambertLongitude() - s->getValeur().getPuissanceEmission(), p.getLambertLatitude() + s->getValeur().getPuissanceEmission(), p.getLambertLongitude() + s->getValeur().getPuissanceEmission());
+		if (rect)
+		{
+			rectangle(
+				p.getLambertLatitude() - s->getValeur().getPuissanceEmission(),
+				p.getLambertLongitude() - s->getValeur().getPuissanceEmission(),
+				p.getLambertLatitude() + s->getValeur().getPuissanceEmission(),
+				p.getLambertLongitude() + s->getValeur().getPuissanceEmission());
+		}
+		else
+		{
+			circle(p.getLambertLatitude(), p.getLambertLongitude(), s->getValeur().getPuissanceEmission());
+		}
 		setcolor(WHITE);
 
 		// Afficher le Label du sommet
@@ -395,14 +404,14 @@ void testComplet()
 
 	g.colorierGraphe();
 
-	trace(g);
+	trace(g, true);
 }
 
 void testAnimation()
 {
 	vector<Sommet<Antenne> *> sommets;
 
-	ifstream fichier("Antennes.txt");
+	ifstream fichier("AntennesV2.txt");
 	if (fichier)
 	{
 		string ligne;
@@ -432,7 +441,7 @@ void testAnimation()
 		for (Sommet<Antenne> *s : sommets)
 		{
 
-			//if(s->getVoisins().size() > 0) continue;
+			// if(s->getVoisins().size() > 0) continue;
 
 			Antenne a = s->getValeur();
 			a.setPuissanceEmission(a.getPuissanceEmission() + 5);
@@ -454,7 +463,7 @@ void testAnimation()
 
 		g.colorierGraphe();
 
-		trace(g);
+		trace(g, false);
 
 		sleep(100);
 	}
