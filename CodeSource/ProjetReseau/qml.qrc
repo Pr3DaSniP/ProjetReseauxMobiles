@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>maille.qml</file>
+        <file>antenne.qml</file>
+        <file>marker.png</file>
+        <file>arete.qml</file>
+        <file>rangeAntenne.qml</file>
+        <file>resultatDialog.qml</file>
+    </qresource>
+</RCC>
