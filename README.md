@@ -1,7 +1,7 @@
 # Projet d'Affectation de Fréquences pour Antennes
 
 ![Release](https://img.shields.io/badge/Release-v1.0.0-blueviolet)
-![Language](https://img.shields.io/badge/Language-C%2B%2B-0052cf)
+![Langage](https://img.shields.io/badge/Language-C%2B%2B-0052cf)
 ![Framework](https://img.shields.io/badge/Language-Qt-green)
 
 <br />
